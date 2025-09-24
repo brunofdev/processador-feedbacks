@@ -6,12 +6,15 @@ import java.time.LocalDateTime;
 public class FeedbackDTO implements Serializable {
     private String userFeedback;
     private int userRating;
-    private LocalDateTime time;
+    private LocalDateTime createdAt;
 
-    public FeedbackDTO(String userFeedback, int userRating, LocalDateTime time) {
+    public FeedbackDTO() {
+    }
+
+    public FeedbackDTO(String userFeedback, int userRating, LocalDateTime createdAt) {
         this.userFeedback = userFeedback;
         this.userRating = userRating;
-        this.time = time;
+        this.createdAt = createdAt;
     }
 
     public String getUserFeedback() {
@@ -30,11 +33,11 @@ public class FeedbackDTO implements Serializable {
         this.userRating = userRating;
     }
 
-    public LocalDateTime getTime() {
-        return time;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setTime(LocalDateTime time) {
-        this.time = time;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }

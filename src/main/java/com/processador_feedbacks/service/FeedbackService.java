@@ -6,10 +6,8 @@ import com.processador_feedbacks.mapper.FeedbackMapper;
 import com.processador_feedbacks.producer.FeedbackProducer;
 import com.processador_feedbacks.validation.FeedbackValidation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 
 @Service
 public class FeedbackService {

@@ -4,8 +4,14 @@ import com.processador_feedbacks.core.StringFormater;
 import com.processador_feedbacks.dto.FeedbackCreateDTO;
 import com.processador_feedbacks.exceptions.InvalidUserRating;
 import com.processador_feedbacks.exceptions.ShortUserFeedback;
+import org.springframework.stereotype.Component;
 
+@Component
 public class FeedbackValidation {
+
+    public FeedbackValidation(){
+
+    }
     public void validateFeedback(FeedbackCreateDTO dto){
         String textFeedback = StringFormater.removeSpaces(dto.getUserFeedback());
         if(textFeedback.length() <= 15){
