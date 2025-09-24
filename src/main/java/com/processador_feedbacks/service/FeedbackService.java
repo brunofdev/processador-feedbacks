@@ -16,7 +16,9 @@ public class FeedbackService {
     private FeedbackProducer feedbackProducer;
 
     public FeedbackDTO processAndSendFeedback(FeedbackCreateDTO feedbackCreateDTO){
-        FeedbackDTO feedbackDTO = new FeedbackDTO(feedbackCreateDTO.getUserFeedback(),
+
+        FeedbackDTO feedbackDTO = new FeedbackDTO(
+                feedbackCreateDTO.getUserFeedback(),
                 feedbackCreateDTO.getUserRating(),
                 LocalDateTime.now());
         feedbackProducer.send(feedbackDTO);

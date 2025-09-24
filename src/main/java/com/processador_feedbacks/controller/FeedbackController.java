@@ -7,15 +7,12 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
-
 @RestController
 @RequestMapping("/feedback")
 @CrossOrigin(origins = "*")
 public class FeedbackController {
 
     private final FeedbackService feedbackService;
-
     public FeedbackController (FeedbackService feedbackService){
         this.feedbackService = feedbackService;
     }
