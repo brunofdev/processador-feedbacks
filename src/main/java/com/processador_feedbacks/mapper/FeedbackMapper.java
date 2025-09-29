@@ -12,11 +12,12 @@ public class FeedbackMapper {
     public FeedbackMapper(){
 
     }
-    public FeedbackDTO mapFeedbackCreateDtoToFeedbackDto(FeedbackCreateDTO feedbackCreateDTO){
+    public FeedbackDTO mapFeedbackCreateDtoToFeedbackDto(FeedbackCreateDTO feedbackCreateDTO, String userName){
         return new FeedbackDTO(
                 feedbackCreateDTO.getUserFeedback(),
                 feedbackCreateDTO.getUserRating(),
-                LocalDateTime.now()
+                LocalDateTime.now(),
+                userName
         );
     }
 }

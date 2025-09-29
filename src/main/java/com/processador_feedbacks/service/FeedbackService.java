@@ -6,7 +6,10 @@ import com.processador_feedbacks.mapper.FeedbackMapper;
 import com.processador_feedbacks.producer.FeedbackProducer;
 import com.processador_feedbacks.validation.FeedbackValidation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.concurrent.RecursiveTask;
 
 
 @Service
@@ -23,11 +26,10 @@ public class FeedbackService {
         this.feedbackMapper = feedbackMapper;
     }
 
-    public FeedbackDTO processAndSendFeedback(FeedbackCreateDTO feedbackCreateDTO){
-        feedbackValidation.validateFeedback(feedbackCreateDTO);
-        FeedbackDTO feedbackDTO = feedbackMapper.mapFeedbackCreateDtoToFeedbackDto(feedbackCreateDTO);
+    public void processAndSendFeedback(FeedbackCreateDTO feedbackCreateDTO, String userName){
+        feedbackValidation.validateFeedback(feedbackCreateDTO, userName);
+        FeedbackDTO feedbackDTO = feedbackMapper.mapFeedbackCreateDtoToFeedbackDto(feedbackCreateDTO,userName);
         feedbackProducer.send(feedbackDTO);
-        return feedbackDTO;
     }
 
 

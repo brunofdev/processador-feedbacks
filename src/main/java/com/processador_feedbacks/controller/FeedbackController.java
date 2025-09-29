@@ -8,16 +8,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/feedback")
-@CrossOrigin(origins = "*")
+@RequestMapping("/api/processfeedback")
 public class FeedbackController {
 
     private final FeedbackService feedbackService;
     public FeedbackController (FeedbackService feedbackService){
         this.feedbackService = feedbackService;
     }
-    @PostMapping("/criar-feedback")
-    public ResponseEntity<FeedbackDTO> createFeedback(@RequestBody @Valid FeedbackCreateDTO feedBackCreateDTO){
-        return ResponseEntity.ok(feedbackService.processAndSendFeedback(feedBackCreateDTO));
+
+    @PostMapping("/createfeedback")
+    public ResponseEntity<Void> createFeedback(@RequestBody @Valid FeedbackCreateDTO feedBackCreateDTO,
+                                               @RequestHeader("X-Authenticated-User") String username){
+        return ResponseEntity.ok().build();
     }
 }
