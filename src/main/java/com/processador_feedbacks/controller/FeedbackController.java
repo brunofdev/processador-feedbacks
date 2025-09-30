@@ -17,9 +17,8 @@ public class FeedbackController {
     }
 
     @PostMapping("/createfeedback")
-    public ResponseEntity<Void> createFeedback(@RequestBody @Valid FeedbackCreateDTO feedBackCreateDTO,
+    public ResponseEntity<FeedbackDTO> createFeedback(@RequestBody @Valid FeedbackCreateDTO feedBackCreateDTO,
                                                @RequestHeader("X-Authenticated-User") String username){
-        feedbackService.processAndSendFeedback(feedBackCreateDTO, username);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body(feedbackService.processAndSendFeedback(feedBackCreateDTO, username));
     }
 }

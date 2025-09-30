@@ -26,10 +26,11 @@ public class FeedbackService {
         this.feedbackMapper = feedbackMapper;
     }
 
-    public void processAndSendFeedback(FeedbackCreateDTO feedbackCreateDTO, String userName){
+    public FeedbackDTO processAndSendFeedback(FeedbackCreateDTO feedbackCreateDTO, String userName){
         feedbackValidation.validateFeedback(feedbackCreateDTO, userName);
         FeedbackDTO feedbackDTO = feedbackMapper.mapFeedbackCreateDtoToFeedbackDto(feedbackCreateDTO,userName);
         feedbackProducer.send(feedbackDTO);
+        return feedbackDTO;
     }
 
 
