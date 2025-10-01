@@ -19,19 +19,21 @@ public class FeedbackService {
     private FeedbackValidation feedbackValidation;
     private FeedbackMapper feedbackMapper;
 
+    //injection
     @Autowired
-    public FeedbackService(FeedbackProducer feedbackProducer,FeedbackValidation feedbackValidation, FeedbackMapper feedbackMapper){
+    public FeedbackService(FeedbackProducer feedbackProducer,
+                           FeedbackValidation feedbackValidation,
+                           FeedbackMapper feedbackMapper){
         this.feedbackValidation = feedbackValidation;
         this.feedbackProducer = feedbackProducer;
         this.feedbackMapper = feedbackMapper;
     }
-
+    //methods
     public FeedbackDTO processAndSendFeedback(FeedbackCreateDTO feedbackCreateDTO, String userName){
         feedbackValidation.validateFeedback(feedbackCreateDTO, userName);
         FeedbackDTO feedbackDTO = feedbackMapper.mapFeedbackCreateDtoToFeedbackDto(feedbackCreateDTO,userName);
         feedbackProducer.send(feedbackDTO);
         return feedbackDTO;
     }
-
 
 }

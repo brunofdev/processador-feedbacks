@@ -14,7 +14,6 @@ public class FeedbackProducer {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-
     public void send(FeedbackDTO feedbackDTO) {
         System.out.println("Enviando mensagem para a fila '" + queue_name + "'...");
         rabbitTemplate.convertAndSend(queue_name, feedbackDTO);

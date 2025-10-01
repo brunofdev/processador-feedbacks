@@ -1,4 +1,4 @@
-package com.processador_feedbacks.core;
+package com.processador_feedbacks.core.config;
 
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;

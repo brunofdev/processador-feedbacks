@@ -2,7 +2,7 @@ package com.processador_feedbacks.dto.apiresponse;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-@JsonInclude(JsonInclude.Include.NON_NULL) // ignora campos nulos no JSON
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiResponse<T> {
     private boolean status;
     private String message;
@@ -31,27 +31,21 @@ public class ApiResponse<T> {
     public void setStatus(boolean status){
         this.status = status;
     }
-
     public ApiError getErro() {
         return erro;
     }
-
     public void setErro(ApiError erro) {
         this.erro = erro;
     }
-
     public String getMessage() {
         return message;
     }
-
     public void setMessage(String message) {
         this.message = message;
     }
-
     public T getDados() {
         return dados;
     }
-
     public void setDados(T dados) {
         this.dados = dados;
     }
