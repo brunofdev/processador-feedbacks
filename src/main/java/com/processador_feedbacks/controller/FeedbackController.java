@@ -2,6 +2,7 @@ package com.processador_feedbacks.controller;
 
 import com.processador_feedbacks.dto.FeedbackCreateDTO;
 import com.processador_feedbacks.dto.FeedbackDTO;
+import com.processador_feedbacks.dto.apiresponse.ApiResponse;
 import com.processador_feedbacks.service.FeedbackService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +18,10 @@ public class FeedbackController {
     }
 
     @PostMapping("/createfeedback")
-    public ResponseEntity<FeedbackDTO> createFeedback(@RequestBody @Valid FeedbackCreateDTO feedBackCreateDTO,
-                                               @RequestHeader("X-Authenticated-User") String username){
-        return ResponseEntity.ok().body(feedbackService.processAndSendFeedback(feedBackCreateDTO, username));
+    public ResponseEntity<ApiResponse<FeedbackDTO>> createFeedback(@RequestBody @Valid FeedbackCreateDTO feedBackCreateDTO,
+                                                                  @RequestHeader("X-Authenticated-User") String username){
+        return ResponseEntity.ok()
+                .body(ApiResponse.success("Recurso Criado com sucesso",
+                        feedbackService.processAndSendFeedback(feedBackCreateDTO, username)));
     }
 }
